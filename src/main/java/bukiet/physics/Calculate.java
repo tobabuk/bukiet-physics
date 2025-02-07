@@ -1,4 +1,5 @@
 package bukiet.physics;
+
 import java.lang.Math;
 
 public class Calculate {
@@ -17,10 +18,10 @@ public class Calculate {
 
      double netX = f1x + f2x;
      double netY = f1y + f2y;
-     double netNet = Math.sqrt((netX*netX) +  (netY*netY));
-     double sum = netY/netX;
+     double netNet = Math.sqrt((netX * netX) +  (netY * netY));
+     double sum = netY / netX;
 
-     double direction =Math.toDegrees( Math.atan(sum));
+     double direction = Math.toDegrees(Math.atan(sum));
 
         System.out.printf("The resulting force of the collision of one "
                 + "force at 32 degrees and another at 105, "
