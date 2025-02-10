@@ -29,18 +29,18 @@ public class Force {
     }
 
 
-    public Force addForces(Force F) {
+    public Force addForces(Force f) {
         double fy1 = (this.magnitude * Math.sin(Math.toRadians(this.degrees)));
         double fx1 = (this.magnitude * Math.cos(Math.toRadians(this.degrees)));
-        double fy2 = (F.magnitude * Math.sin(Math.toRadians(F.degrees)));
-        double fx2 = (F.magnitude * Math.cos(Math.toRadians(F.degrees)));
+        double fy2 = (f.magnitude * Math.sin(Math.toRadians(f.degrees)));
+        double fx2 = (f.magnitude * Math.cos(Math.toRadians(f.degrees)));
 
 
         double netX = fx1 + fx2;
         double netY = fy1 + fy2;
         double netNet = Math.sqrt((netX * netX) + (netY * netY));
         double direction = Math.toDegrees(Math.atan2(netY, netX));
-        return new Force (direction, netNet);
+        return new Force(direction, netNet);
 
 
     }
