@@ -1,8 +1,25 @@
 package bukiet.physics;
 
 public class Force {
-    private double magnitude;
+
     private double degrees;
+    private double magnitude;
+
+    public double getDegrees() {
+        return degrees;
+    }
+
+    public void setDegrees(double degrees) {
+        this.degrees = degrees;
+    }
+
+    public void setMagnitude(double magnitude) {
+        this.magnitude = magnitude;
+    }
+
+    public double getMagnitude() {
+        return magnitude;
+    }
 
 
     public Force(double degrees, double magnitude) {
@@ -12,21 +29,23 @@ public class Force {
     }
 
 
+    public Force addForces(Force F) {
+        double fy1 = (this.magnitude * Math.sin(Math.toRadians(this.degrees)));
+        double fx1 = (this.magnitude * Math.cos(Math.toRadians(this.degrees)));
+        double fy2 = (F.magnitude * Math.sin(Math.toRadians(F.degrees)));
+        double fx2 = (F.magnitude * Math.cos(Math.toRadians(F.degrees)));
 
 
-        public double addForces ( double degrees, double magnitude){
-            double fy = (magnitude * Math.cos(Math.toRadians(degrees)));
-            double fx = (magnitude * Math.cos(Math.toRadians(degrees)));
+        double netX = fx1 + fx2;
+        double netY = fy1 + fy2;
+        double netNet = Math.sqrt((netX * netX) + (netY * netY));
+        double direction = Math.toDegrees(Math.atan2(netY, netX));
+        return new Force (direction, netNet);
 
 
-            double netNet = Math.sqrt((netX * netX) + (netY * netY));
-            double sum = netY / netX;
+    }
 
-
-            double direction = Math.toDegrees(Math.atan(sum));
-     System.out.printf("The resulting force of the collision is:" + netNet + direction);
-
-
-
+    public Force scale(double t) {
+        return new Force(this.degrees, this.magnitude * t);
     }
 }
