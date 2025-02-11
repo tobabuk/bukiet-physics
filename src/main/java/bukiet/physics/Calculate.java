@@ -18,7 +18,7 @@ public class Calculate {
 
         double netX = f1x + f2x;
         double netY = f1y + f2y;
-        double netNet = Math.sqrt((netX * netX) + (netY * netY));
+        double netTotal = Math.sqrt((netX * netX) + (netY * netY));
         double sum = netY / netX;
 
         double direction = Math.toDegrees(Math.atan(sum));
@@ -28,7 +28,7 @@ public class Calculate {
                 + "both with a magnitude of 10 is "
                 + "%.2f"
                 + " with an angle of "
-                + "%.2f", netNet, direction);
+                + "%.2f", netTotal, direction);
 
 
     }

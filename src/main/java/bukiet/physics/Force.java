@@ -5,12 +5,19 @@ public class Force {
     private double degrees;
     private double magnitude;
 
-    public double getDegrees() {
-        return degrees;
+    public Force(double degrees, double magnitude) {
+
+        this.degrees = degrees;
+        this.magnitude = magnitude;
     }
+
 
     public void setDegrees(double degrees) {
         this.degrees = degrees;
+    }
+
+    public double getDegrees() {
+        return degrees;
     }
 
     public void setMagnitude(double magnitude) {
@@ -21,12 +28,6 @@ public class Force {
         return magnitude;
     }
 
-
-    public Force(double degrees, double magnitude) {
-
-        this.degrees = degrees;
-        this.magnitude = magnitude;
-    }
 
 
     public Force addForces(Force f) {
