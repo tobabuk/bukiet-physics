@@ -1,52 +1,45 @@
 package bukiet.physics;
 
 public class Force {
+    public static final Force GRAVITY = new Force(0,-9.8);
+    private double x;
+    private double y;
 
-    private double degrees;
-    private double magnitude;
 
-    public Force(double degrees, double magnitude) {
+    public Force(double x, double y) {
 
-        this.degrees = degrees;
-        this.magnitude = magnitude;
+        this.x = x;
+        this.y = y;
     }
 
-
-    public void setDegrees(double degrees) {
-        this.degrees = degrees;
+    public Force(Angle angle, double magnitude) {
+    double radians = angle.toRadian();
+   x = (magnitude * Math.cos(radians));
+   y = (magnitude * Math.sin(radians));
     }
 
-    public double getDegrees() {
-        return degrees;
+    public double getX() {
+       return x;
+
+    }
+    public double getY() {
+        return y;
     }
 
-    public void setMagnitude(double magnitude) {
-        this.magnitude = magnitude;
+    public double getAngle(){
+        return Math.toDegrees(Math.atan2(y, x));
     }
-
-    public double getMagnitude() {
-        return magnitude;
+    public double getMagnitude(){
+        return Math.sqrt(x*x+y*y);
     }
-
 
 
     public Force addForces(Force f) {
-        double fy1 = (this.magnitude * Math.sin(Math.toRadians(this.degrees)));
-        double fx1 = (this.magnitude * Math.cos(Math.toRadians(this.degrees)));
-        double fy2 = (f.magnitude * Math.sin(Math.toRadians(f.degrees)));
-        double fx2 = (f.magnitude * Math.cos(Math.toRadians(f.degrees)));
-
-
-        double netX = fx1 + fx2;
-        double netY = fy1 + fy2;
-        double netNet = Math.sqrt((netX * netX) + (netY * netY));
-        double direction = Math.toDegrees(Math.atan2(netY, netX));
-        return new Force(direction, netNet);
-
+   return new Force(x+ f.x, y+f.y);
 
     }
 
     public Force scale(double t) {
-        return new Force(this.degrees, this.magnitude * t);
+        return new Force( this.getAngle(), this.getMagnitude() * t);
     }
 }

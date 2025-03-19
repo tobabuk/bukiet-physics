@@ -11,6 +11,7 @@ public class Location {
     }
 
     public double getX() {
+
         return x;
     }
 
@@ -18,7 +19,8 @@ public class Location {
         this.x = x;
     }
 
-    public double getY() {
+    public double getY()
+    {
         return y;
     }
 
@@ -27,10 +29,17 @@ public class Location {
     }
 
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "y=" + y +
+                ", x=" + x +
+                '}';
+    }
 
     public Location apply(Force f) {
-        double displacementX = f.getMagnitude() * Math.cos(Math.toRadians(f.getDegrees()));
-        double displacementY = f.getMagnitude() * Math.sin(Math.toRadians(f.getDegrees()));
+        double displacementX = f.getMagnitude() * Math.cos(f.getAngle());
+        double displacementY = f.getMagnitude() * Math.sin(f.getAngle());
         return new Location(this.x + displacementX, this.y + displacementY);
     }
 }

@@ -8,12 +8,12 @@ class ForceTest {
     @Test
     public void addForces() {
         // given
-        Force a = new Force(32, 10);
-        Force b = new Force(105, 10);
+        Force a = new Force(new Angle(32), 10);
+        Force b = new Force(new Angle(105), 10);
         //when
         Force c = a.addForces(b);
         //then
-        assertEquals(68.5, c.getDegrees(), 0.1);
+        assertEquals(68.5, c.getAngle(), 0.1);
         assertEquals(16.08, c.getMagnitude(), 0.1);
 
     }
@@ -22,7 +22,7 @@ class ForceTest {
     public void scale() {
         Force f = new Force(30, 15);
         Force a = f.scale(.391);
-        assertEquals(30, a.getDegrees(), .01);
+        assertEquals(30, a.getAngle(), .01);
         assertEquals(5.865, a.getMagnitude(), .001);
 
     }
